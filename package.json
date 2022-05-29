@@ -1,0 +1,21 @@
+{
+    "name": "artillery-with-cluster",
+    "version": "1.0.0",
+    "description": "Load test with Artillery and clusterized API",
+    "main": "main.js",
+    "author": "Matheus R. Brunelli",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "start": "node main.js",
+        "test": "artillery run test/config.yml --output test/test.json",
+        "pretest": "curl -X POST http://localhost:3000/logs/clear",
+        "posttest": "artillery report --output test/report.html test/test.json",
+        "get": "curl http://localhost:3000/logs/count",
+        "post": "curl -X POST http://localhost:3000/logs"
+    },
+    "dependencies": {
+        "artillery": "^2.0.0-17",
+        "express": "^4.18.1"
+    }
+}
